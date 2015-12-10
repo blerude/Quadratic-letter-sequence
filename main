@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char **argv)
+{
+	int totalLength;
+	char *goal;
+	int goalChar;
+	char *goalText;
+	char *result;
+	int len;
+	int resultLen;
+
+	totalLength = argc;
+	result = malloc(sizeof(int) * totalLength);
+	resultLen = strlen(result);
+
+	int h;
+	int i;
+	int j;
+	int k;
+	int l;
+	
+	int c0;
+	int c1;
+	int c2;
+	int pos;
+
+	for(h = 0; h < totalLength; h++)
+	{
+		goal = argv[h];
+		printf("%s\n", goal);
+
+		len = strlen(goal);
+
+		for(int j = 0; j < totalLength; j++)
+		{
+			c0 = j;
+			for(int k = 0; k < (totalLength / 2); k++)
+			{
+				c1 = k;
+				for(int l = 0; l < totalLength; l++)
+				{
+					c2 = l;
+					for(i = 0; i < len; i++)
+					{
+						pos = c0 + (c1 * i) + (c2 * (i * i));
+						goalText = malloc(sizeof(int) * len);
+						if(goalText == 0) return 0;
+						
+						goalChar = goal[i];
+						for(m = 0; m < resultLen; m++)
+						{
+							if(goalText[pos] == goalChar)
+							{
+								result[m] = goalChar;
+							}
+
+						}
+						free(goalText);
+					}
+				}
+			} 
+		}
+	}
+
+	return result;
+}
