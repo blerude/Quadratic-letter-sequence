@@ -1,0 +1,1 @@
+# Quadratic-letter-sequence
